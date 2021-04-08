@@ -16,9 +16,7 @@ var convert = data2xml({
     xmlHeader: '<?xml version="1.0" encoding="utf-8"?>\n<?qbxml version="13.0"?>\n'
 });
 
-var fs = require('fs'),
-path = require('path'),
-xmlReader = require('read-xml');
+var fs = require('fs');
 
 // Public
 module.exports = {
@@ -92,19 +90,13 @@ function buildRequests(callback) {
     // requests.push(createCompany);
     //end example code
 
-    var FILE = path.join(__dirname, 'RequestXML/1.xml');
-    var requestxml = '';
- 
-    // pass a buffer or a path to a xml file
-    xmlReader.readXML(fs.readFileSync(FILE), function(err, data) {
-        if (err) { console.error(err); }
-        console.log('DATA CONTENT BELOW ============')
-        console.log(data.content);
-        console.log('END DATA CONTENT   ============')
-        requestxml = data.content;
+    fs.readFile('1.xml', 'utf8', function (err,data) {
+        if (err) {
+            return console.log(err);
+        }
+        
+        requests.push(data);
     });
-
-    requests.push(requestxml);
 
     return callback(null, requests);
 }
