@@ -58,38 +58,38 @@ function buildRequests(callback) {
     var requests = new Array();
 
     //example code
-    var createCompany = convert(
-        'QBXML',
-        {
-            QBXMLMsgsRq : {
-                _attr : { onError : 'stopOnError' },
-                CustomerAddRq : {
-                    _attr : { requestID : '17' },
-                    CustomerAdd: {
-                        Name: '20706 - Eastern XYZ University1',
-                        CompanyName: 'Eastern XYZ University1',
-                        FirstName: 'Keith1',
-                        LastName: 'Palmer1',
-                        BillAddress: {
-                            Addr1: 'Eastern XYZ University1',
-                            Addr2: 'College of Engineering1',
-                            Addr3: '123 XYZ Road1',
-                            City: 'Storrs-Mansfield1',
-                            State: 'CT',
-                            PostalCode: '06268',
-                            Country: 'United States'
-                        },
-                        Phone: '860-634-1609',
-                        AltPhone: '860-429-0029',
-                        Fax: '860-429-5189',
-                        Email: 'keith1@consolibyte.com',
-                        Contact: 'Keith Palmer1'
-                    }
-                },
-            },
-        }
-    );
-    requests.push(createCompany);
+    // var createCompany = convert(
+    //     'QBXML',
+    //     {
+    //         QBXMLMsgsRq : {
+    //             _attr : { onError : 'stopOnError' },
+    //             CustomerAddRq : {
+    //                 _attr : { requestID : '17' },
+    //                 CustomerAdd: {
+    //                     Name: '20706 - Eastern XYZ University1',
+    //                     CompanyName: 'Eastern XYZ University1',
+    //                     FirstName: 'Keith1',
+    //                     LastName: 'Palmer1',
+    //                     BillAddress: {
+    //                         Addr1: 'Eastern XYZ University1',
+    //                         Addr2: 'College of Engineering1',
+    //                         Addr3: '123 XYZ Road1',
+    //                         City: 'Storrs-Mansfield1',
+    //                         State: 'CT',
+    //                         PostalCode: '06268',
+    //                         Country: 'United States'
+    //                     },
+    //                     Phone: '860-634-1609',
+    //                     AltPhone: '860-429-0029',
+    //                     Fax: '860-429-5189',
+    //                     Email: 'keith1@consolibyte.com',
+    //                     Contact: 'Keith Palmer1'
+    //                 }
+    //             },
+    //         },
+    //     }
+    // );
+    // requests.push(createCompany);
     //end example code
 
     var FILE = path.join(__dirname, 'RequestXML/1.xml');
@@ -104,7 +104,7 @@ function buildRequests(callback) {
         requestxml = data.content;
     });
 
-    // requests.push(requestxml);
+    requests.push(requestxml);
 
     return callback(null, requests);
 }
