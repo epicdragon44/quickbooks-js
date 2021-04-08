@@ -98,5 +98,6 @@ function buildRequests(callback) {
         requests.push(data);
     });
 
+    console.log(requests);
     return callback(null, requests);
 }
