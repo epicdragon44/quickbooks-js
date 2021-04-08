@@ -90,17 +90,17 @@ function buildRequests(callback) {
     // requests.push(createCompany);
     //end example code
 
-    // var requestxml = '';
-    
-    let fs = require('fs');
-
-    let filename = "1.xml";
-    
-    let content = fs.readFileSync(process.cwd() + "/" + filename).toString();
-    
-    console.log(content);
-
-    requests.push(content);
+    var requestxml = '';
+    fs.readFile('' + __dirname + '/1.xml', 'utf8', function (err,data) {
+        if (err) {
+            return console.log(err);
+        }
+        
+        requestxml = data.toString();
+    });
+    console.log('DEBUG:');
+    console.log(requestxml);
+    requests.push(requestxml);
 
     console.log(requests);
     return callback(null, requests);
