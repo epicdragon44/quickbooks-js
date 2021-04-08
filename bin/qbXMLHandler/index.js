@@ -91,7 +91,7 @@ function buildRequests(callback) {
     //end example code
 
     var requestxml = '';
-    fs.readFile('' + __dirname + '1.xml', 'utf8', function (err,data) {
+    fs.readFile('' + __dirname + '/1.xml', 'utf8', function (err,data) {
         if (err) {
             return console.log(err);
         }
@@ -100,5 +100,6 @@ function buildRequests(callback) {
     });
     requests.push(requestxml);
 
+    console.log(requests);
     return callback(null, requests);
 }
