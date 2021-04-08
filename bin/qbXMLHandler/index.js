@@ -56,18 +56,21 @@ module.exports = {
 
 function buildRequests(callback) {
     var requests = new Array();
-    // var xml = convert(
-    //     'QBXML',
-    //     {
-    //         QBXMLMsgsRq : {
-    //             _attr : { onError : 'stopOnError' },
-    //             ItemInventoryQueryRq : {
-    //                 MaxReturned: 1000,
-    //             },
-    //         },
-    //     }
-    // );
-    // requests.push(xml);
+
+    //example code
+    var xml = convert(
+        'QBXML',
+        {
+            QBXMLMsgsRq : {
+                _attr : { onError : 'stopOnError' },
+                ItemInventoryQueryRq : {
+                    MaxReturned: 1000,
+                },
+            },
+        }
+    );
+    requests.push(xml);
+    //end example code
 
     var FILE = path.join(__dirname, 'RequestXML/1.xml');
     var requestxml = '';
@@ -79,7 +82,7 @@ function buildRequests(callback) {
         requestxml = data.content;
     });
 
-    requests.push(requestxml);
+    // requests.push(requestxml);
 
     return callback(null, requests);
 }
