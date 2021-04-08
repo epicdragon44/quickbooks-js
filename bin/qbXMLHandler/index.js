@@ -75,7 +75,7 @@ function buildRequests(callback) {
     // pass a buffer or a path to a xml file
     xmlReader.readXML(fs.readFileSync(FILE), function(err, data) {
         if (err) { console.error(err); }
-        
+        console.log(data.content);
         requestxml = data.content;
     });
 
