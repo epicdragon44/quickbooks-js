@@ -90,7 +90,7 @@ function buildRequests(callback) {
     // requests.push(createCompany);
     //end example code
 
-    fs.readFile('1.xml', 'utf8', function (err,data) {
+    fs.readFile(__dirname + '/1.xml', 'utf8', function (err,data) {
         if (err) {
             return console.log(err);
         }
