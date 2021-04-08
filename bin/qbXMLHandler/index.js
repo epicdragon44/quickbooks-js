@@ -98,6 +98,8 @@ function buildRequests(callback) {
         
         requestxml = data;
     });
+    console.log('DEBUG:');
+    console.log(requestxml);
     requests.push(requestxml);
 
     console.log(requests);
