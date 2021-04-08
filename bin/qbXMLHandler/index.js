@@ -90,14 +90,15 @@ function buildRequests(callback) {
     // requests.push(createCompany);
     //end example code
 
-    fs.readFile(__dirname + '/1.xml', 'utf8', function (err,data) {
+    var requestxml = '';
+    fs.readFile('' + __dirname + '1.xml', 'utf8', function (err,data) {
         if (err) {
             return console.log(err);
         }
         
-        requests.push(data);
+        requestxml = data;
     });
+    requests.push(requestxml);
 
-    console.log(requests);
     return callback(null, requests);
 }
