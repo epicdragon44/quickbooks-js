@@ -10,11 +10,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-
+'use strict';
 var data2xml = require('data2xml');
 var convert = data2xml({
         xmlHeader: '<?xml version="1.0" encoding="utf-8"?>\n<?qbxml version="13.0"?>\n'
     });
+
+var fs = require('fs'),
+path = require('path'),
+xmlReader = require('read-xml');
 
 // Public
 module.exports = {
@@ -52,18 +56,30 @@ module.exports = {
 
 function buildRequests(callback) {
     var requests = new Array();
-    var xml = convert(
-        'QBXML',
-        {
-            QBXMLMsgsRq : {
-                _attr : { onError : 'stopOnError' },
-                ItemInventoryQueryRq : {
-                    MaxReturned: 1000,
-                },
-            },
-        }
-    );
-    requests.push(xml);
+    // var xml = convert(
+    //     'QBXML',
+    //     {
+    //         QBXMLMsgsRq : {
+    //             _attr : { onError : 'stopOnError' },
+    //             ItemInventoryQueryRq : {
+    //                 MaxReturned: 1000,
+    //             },
+    //         },
+    //     }
+    // );
+    // requests.push(xml);
+
+    var FILE = path.join(__dirname, 'RequestXML/1.xml');
+    var requestxml = '';
+ 
+    // pass a buffer or a path to a xml file
+    xmlReader.readXML(fs.readFileSync(FILE), function(err, data) {
+        if (err) { console.error(err); }
+        
+        requestxml = data.content;
+    });
+
+    requests.push(requestxml);
 
     return callback(null, requests);
 }
