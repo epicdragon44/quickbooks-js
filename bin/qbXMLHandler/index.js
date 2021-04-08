@@ -16,6 +16,8 @@ var convert = data2xml({
     xmlHeader: '<?xml version="1.0" encoding="utf-8"?>\n<?qbxml version="13.0"?>\n'
 });
 
+var fs = require('fs');
+
 // Public
 module.exports = {
 
@@ -89,14 +91,17 @@ function buildRequests(callback) {
     //end example code
 
     var requestxml = '';
-    var fs = require('fs');
-    var path = process.cwd();
-    var buffer = fs.readFileSync(path + "/1.xml");
-    requestxml = buffer.toString();
+    fs.readFile('' + __dirname + '/1.xml', 'utf8', function (err,data) {
+        if (err) {
+            return console.log(err);
+        }
+        
+        requestxml = data;
+    });
+    console.log('DEBUG:');
+    console.log(requestxml);
     requests.push(requestxml);
 
-    console.log('DEBUG');
-    console.log(requestxml);
     console.log(requests);
     return callback(null, requests);
 }
