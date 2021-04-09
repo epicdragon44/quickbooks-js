@@ -55,84 +55,61 @@ module.exports = {
 function buildRequests(callback) {
     var requests = new Array();
 
-    //example code
-    // var createCompany = convert(
-    //     'QBXML',
-    //     {
-    //         QBXMLMsgsRq : {
-    //             _attr : { onError : 'stopOnError' },
-    //             CustomerAddRq : {
-    //                 _attr : { requestID : '17' },
-    //                 CustomerAdd: {
-    //                     Name: '20706 - Eastern XYZ University1',
-    //                     CompanyName: 'Eastern XYZ University1',
-    //                     FirstName: 'Keith1',
-    //                     LastName: 'Palmer1',
-    //                     BillAddress: {
-    //                         Addr1: 'Eastern XYZ University1',
-    //                         Addr2: 'College of Engineering1',
-    //                         Addr3: '123 XYZ Road1',
-    //                         City: 'Storrs-Mansfield1',
-    //                         State: 'CT',
-    //                         PostalCode: '06268',
-    //                         Country: 'United States'
-    //                     },
-    //                     Phone: '860-634-1609',
-    //                     AltPhone: '860-429-0029',
-    //                     Fax: '860-429-5189',
-    //                     Email: 'keith1@consolibyte.com',
-    //                     Contact: 'Keith Palmer1'
-    //                 }
-    //             },
-    //         },
-    //     }
-    // );
-    // requests.push(createCompany);
-    //end example code
+    requests.push(addFileToRequest('' + __dirname + '/1.xml'));
 
+    console.log("All requests: " + requests);
+    
+    return callback(null, requests);
+}
+
+function addFileToRequest(path) {
     let request = '';
-
+    //path is something like '' + __dirname + '/1.xml'
     var lineReader = require('line-reader');
-    // lineReader.open('' + __dirname + '/1.xml', function(err, reader) {
-    //     console.log('iterating')
-    //     if (err) throw err;
-    //     console.log('entered linereader');
-    //     if (reader.hasNextLine()) {
-    //         reader.nextLine(function(err, line) {
-    //             console.log('entered reader');
-    //             try {
-    //                 if (err) throw err;
-    //                 console.log('logging line:');
-    //                 console.log(line);
-    //                 request += line + '\n';
-    //             } finally {
-    //                 console.log('closing1');
-    //                 reader.close(function(err) {
-    //                 if (err) throw err;          
-    //                 });
-    //             }
-    //         });
-    //     }
-    //     else {
-    //         console.log('closing2');
-    //         reader.close(function(err) {
-    //             if (err) throw err;          
-    //         });
-    //     }
-    // });
-    lineReader.eachLine('' + __dirname + '/1.xml', function(line, last) {
+    lineReader.eachLine(path, function(line, last) {
         console.log('logging line: ')
         console.log(line);
         request += line + '\n';
         if (last) {
             console.log('done');
-            lineReader.close();
-            lineReader.removeAllListeners();
+            console.log('Returned: ' + request)
+            return request;
         }
     });
-
-    requests.push(request);
-
-    console.log("requests: " + requests);
-    return callback(null, requests);
+    return 'ERROR - LINEREADER MESSED UP';
 }
+
+//example code for buildRequests
+// var createCompany = convert(
+//     'QBXML',
+//     {
+//         QBXMLMsgsRq : {
+//             _attr : { onError : 'stopOnError' },
+//             CustomerAddRq : {
+//                 _attr : { requestID : '17' },
+//                 CustomerAdd: {
+//                     Name: '20706 - Eastern XYZ University1',
+//                     CompanyName: 'Eastern XYZ University1',
+//                     FirstName: 'Keith1',
+//                     LastName: 'Palmer1',
+//                     BillAddress: {
+//                         Addr1: 'Eastern XYZ University1',
+//                         Addr2: 'College of Engineering1',
+//                         Addr3: '123 XYZ Road1',
+//                         City: 'Storrs-Mansfield1',
+//                         State: 'CT',
+//                         PostalCode: '06268',
+//                         Country: 'United States'
+//                     },
+//                     Phone: '860-634-1609',
+//                     AltPhone: '860-429-0029',
+//                     Fax: '860-429-5189',
+//                     Email: 'keith1@consolibyte.com',
+//                     Contact: 'Keith Palmer1'
+//                 }
+//             },
+//         },
+//     }
+// );
+// requests.push(createCompany);
+//end example code
