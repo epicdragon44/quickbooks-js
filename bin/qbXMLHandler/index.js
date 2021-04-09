@@ -67,22 +67,12 @@ function buildFiles(buildcallback) {
 
     let requests = new Array();
 
-    const numOfFiles = 0;
+    var numOfFiles = 0;
 
     //count number of xml files
-    const fs = require('fs');
-    fs.readdir(__dirname, (err, files) => {
-        numOfFiles = files.length - 1;
-    });
-
-    //wait for numOfFiles to update
-    var timeout1 = setInterval(function() {
-        if(numOfFiles > 0) {
-            clearInterval(timeout1);
-            console.log('number of xml files in the folder: ' + numOfFiles);
-        }
-    }, 100);
-    console.log('number of xml files finished updating');
+    const shell = require('shelljs');
+    numOfFiles = () => shell.exec(`cd ${__dirname} || exit; ls -d -- */ | grep 'page-*' | wc -l`, { silent:true }).output;
+    numOfFiles = numOfFiles - 1;
 
     //for each file, read and add to requests
     for (let i = 1; i <= numOfFiles; i++) {
