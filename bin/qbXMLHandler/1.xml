@@ -4,15 +4,15 @@
     <QBXMLMsgsRq onError="stopOnError">
         <CustomerAddRq requestID="15">
             <CustomerAdd>
-                <Name>20706 - Eastern XYZ University - Try 2</Name>
-                <CompanyName>Eastern XYZ University - Try 2</CompanyName>
-                <FirstName>Keith - Try 2</FirstName>
-                <LastName>Palmer - Try 2</LastName>
+                <Name>20706 - Eastern XYZ University - A</Name>
+                <CompanyName>Eastern XYZ University - A</CompanyName>
+                <FirstName>Keith - A</FirstName>
+                <LastName>Palmer - A</LastName>
                 <BillAddress>
-                    <Addr1>Eastern XYZ University - Try 2</Addr1>
-                    <Addr2>College of Engineering - Try 2</Addr2>
-                    <Addr3>123 XYZ Road - Try 2</Addr3>
-                    <City>Storrs-Mansfield - Try 2</City>
+                    <Addr1>Eastern XYZ University - A</Addr1>
+                    <Addr2>College of Engineering - A</Addr2>
+                    <Addr3>123 XYZ Road - A</Addr3>
+                    <City>Storrs-Mansfield - A</City>
                     <State>CT</State>
                     <PostalCode>06268 - Try 2</PostalCode>
                     <Country>United States - Try 2</Country>
