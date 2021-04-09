@@ -16,7 +16,7 @@ var convert = data2xml({
     xmlHeader: '<?xml version="1.0" encoding="utf-8"?>\n<?qbxml version="13.0"?>\n'
 });
 
-var fs = require('fs');
+// var fs = require('fs');
 
 // Public
 module.exports = {
@@ -67,8 +67,24 @@ function buildFiles(buildcallback) {
 
     let requests = new Array();
 
-    const numOfFiles = 1;
+    const numOfFiles = 0;
 
+    //count number of xml files
+    const fs = require('fs');
+    fs.readdir(__dirname, (err, files) => {
+        numOfFiles = files.length - 1;
+    });
+
+    //wait for numOfFiles to update
+    var timeout1 = setInterval(function() {
+        if(numOfFiles > 0) {
+            clearInterval(timeout1);
+            console.log('number of xml files in the folder: ' + numOfFiles);
+        }
+    }, 100);
+    console.log('number of xml files finished updating');
+
+    //for each file, read and add to requests
     for (let i = 1; i <= numOfFiles; i++) {
         console.log('iterating on file #' + i);
         addFileToRequest('' + __dirname + '/' + i + '.xml', function(request) {
@@ -77,9 +93,10 @@ function buildFiles(buildcallback) {
         }); 
     }
 
-    var timeout = setInterval(function() {
+    //wait for requests to populate
+    var timeout2 = setInterval(function() {
         if(requests.length === numOfFiles) {
-            clearInterval(timeout);
+            clearInterval(timeout2);
             console.log('Returning requests and exiting buildFiles');
             return buildcallback(requests);
         }
