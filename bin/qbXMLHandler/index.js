@@ -126,7 +126,8 @@ function buildRequests(callback) {
         request += line + '\n';
         if (last) {
             console.log('done');
-            return false; // stop reading
+            lineReader.close();
+            lineReader.removeAllListeners();
         }
     });
 
