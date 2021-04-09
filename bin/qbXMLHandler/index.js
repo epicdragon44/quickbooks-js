@@ -53,18 +53,40 @@ module.exports = {
 };
 
 function buildRequests(callback) {
-    var requests = new Array();
-
-    addFileToRequest('' + __dirname + '/1.xml', function(request) {
-        requests.push(request);
-
-        console.log("All requests: " + requests);
+    console.log('entered buildRequests');
+    buildFiles().then(requests => {
+        // array of results in order here
+        console.log('done: ' + requests);
 
         return callback(null, requests);
-    });    
+
+    }).catch(err => {
+        console.log(err);
+    });
+}
+
+function buildFiles() {
+    console.log('entered buildFiles');
+
+    let requests = new Array();
+
+    const numOfFiles = 1;
+
+    for (let i = 1; i <= numOfFiles; i++) {
+        console.log('iterating on file #' + i);
+        addFileToRequest('' + __dirname + '/' + i + '.xml', function(request) {
+            console.log('pushed request #' + i);
+            requests.push(request);
+        }); 
+    }
+
+    console.log('Promising requests and exiting buildFiles');
+    return Promise.all(requests);
 }
 
 function addFileToRequest(path, callback) {
+    console.log('entered addFileToRequest');
+
     let request = '';
     //path is something like '' + __dirname + '/1.xml'
     var lineReader = require('line-reader');
