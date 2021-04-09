@@ -70,9 +70,10 @@ function buildFiles(buildcallback) {
     var numOfFiles = 0;
 
     //count number of xml files
-    const shell = require('shelljs');
-    numOfFiles = () => shell.exec(`cd ${__dirname} || exit; ls -d -- */ | grep 'page-*' | wc -l`, { silent:true }).output;
-    numOfFiles = numOfFiles - 1;
+    const fs = require('fs');
+    const length = fs.readdirSync(__dirname).length;
+    numOfFiles = length - 1;
+    console.log('there are ' + numOfFiles + " xml files available")
 
     //for each file, read and add to requests
     for (let i = 1; i <= numOfFiles; i++) {
