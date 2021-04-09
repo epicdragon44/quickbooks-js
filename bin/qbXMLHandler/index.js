@@ -106,6 +106,7 @@ function buildRequests(callback) {
                     console.log(line);
                     request += line + '\n';
                 } finally {
+                    console.log('closing1');
                     reader.close(function(err) {
                     if (err) throw err;          
                     });
@@ -113,6 +114,7 @@ function buildRequests(callback) {
             });
         }
         else {
+            console.log('closing2');
             reader.close(function(err) {
                 if (err) throw err;          
             });
