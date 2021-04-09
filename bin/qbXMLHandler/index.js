@@ -16,7 +16,7 @@ var convert = data2xml({
     xmlHeader: '<?xml version="1.0" encoding="utf-8"?>\n<?qbxml version="13.0"?>\n'
 });
 
-// var fs = require('fs');
+var fs = require('fs');
 
 // Public
 module.exports = {
@@ -107,9 +107,9 @@ function buildRequests(callback) {
 
     //TRY2
 
-    // let request = '';
+    let request = '';
 
-    // const lineReader = require('line-reader');
+    var lineReader = require('line-reader');
     // lineReader.open('' + __dirname + '/1.xml', function(reader) {
     //     if (reader.hasNextLine()) {
     //         reader.nextLine(function(line) {
@@ -118,33 +118,27 @@ function buildRequests(callback) {
     //         });
     //     }
     // });
-    
-    // requests.push(request);
-
-    //TRY3
-
-    let request = '';
-
-    var fs = require('fs'),
-        es = require('event-stream'),
-        os = require('os');
-
-    var s = fs.createReadStream(path)
-        .pipe(es.split())
-        .pipe(es.mapSync(function(line) {
-            //pause the readstream
-            s.pause();
-            console.log("line:", line);
-            request += line + '\n'; //my line
-            s.resume();
-        })
-        .on('error', function(err) {
-            console.log('Error:', err);
-        })
-        .on('end', function() {
-            console.log('Finish reading.');
-        })
-    );
+    lineReader.open('' + __dirname + '/1.xml', function(err, reader) {
+        if (err) throw err;
+        if (reader.hasNextLine()) {
+            reader.nextLine(function(err, line) {
+            try {
+                if (err) throw err;
+                console.log(line);
+                request += line + '\n';
+            } finally {
+                reader.close(function(err) {
+                if (err) throw err;          
+                });
+            }
+            });
+        }
+        else {
+            reader.close(function(err) {
+            if (err) throw err;          
+            });
+        }
+    });
 
     requests.push(request);
 
