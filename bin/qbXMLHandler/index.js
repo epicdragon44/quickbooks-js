@@ -55,28 +55,28 @@ module.exports = {
 function buildRequests(callback) {
     var requests = new Array();
 
-    requests.push(addFileToRequest('' + __dirname + '/1.xml'));
+    addFileToRequest('' + __dirname + '/1.xml', function(request) {
+        requests.push(request);
 
-    console.log("All requests: " + requests);
-    
-    return callback(null, requests);
+        console.log("All requests: " + requests);
+
+        return callback(null, requests);
+    });    
 }
 
-function addFileToRequest(path) {
+function addFileToRequest(path, callback) {
     let request = '';
     //path is something like '' + __dirname + '/1.xml'
     var lineReader = require('line-reader');
     lineReader.eachLine(path, function(line, last) {
-        console.log('logging line: ')
-        console.log(line);
+        console.log("log: " + line);
         request += line + '\n';
         if (last) {
             console.log('done');
-            console.log('Returned: ' + request)
-            return request;
+            console.log('Returned: ' + request);
+            return callback(request);
         }
     });
-    return 'ERROR - LINEREADER MESSED UP';
 }
 
 //example code for buildRequests
