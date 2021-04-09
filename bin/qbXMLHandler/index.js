@@ -90,6 +90,20 @@ function buildRequests(callback) {
     requests.push(createCompany);
     //end example code
 
+    let request = '';
+
+    const lineReader = require('line-reader');
+    lineReader.open('' + __dirname + '/1.xml', function(reader) {
+        if (reader.hasNextLine()) {
+            reader.nextLine(function(line) {
+                console.log(line);
+                request += line + '\n';
+            });
+        }
+    });
+    
+    // requests.push(request);
+
     console.log(requests);
     return callback(null, requests);
 }
