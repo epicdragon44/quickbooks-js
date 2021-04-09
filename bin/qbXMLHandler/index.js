@@ -94,7 +94,7 @@ function buildRequests(callback) {
 
     var lineReader = require('line-reader');
     lineReader.open('' + __dirname + '/1.xml', function(err, reader) {
-        
+        console.log('iterating')
         if (err) throw err;
         console.log('entered linereader');
         if (reader.hasNextLine()) {
