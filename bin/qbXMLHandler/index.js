@@ -80,8 +80,15 @@ function buildFiles() {
         }); 
     }
 
-    console.log('Promising requests and exiting buildFiles');
-    return Promise.all(requests);
+    var timeout = setInterval(function() {
+        if(requests.length === numOfFiles) {
+            clearInterval(timeout);
+            console.log('Returning requests and exiting buildFiles');
+            return requests;
+        }
+    }, 100);
+
+    // return Promise.all(requests);
 }
 
 function addFileToRequest(path, callback) {
