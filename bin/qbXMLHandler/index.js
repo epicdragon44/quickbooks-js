@@ -56,53 +56,52 @@ function buildRequests(callback) {
     var requests = new Array();
 
     //example code
-    var createCompany = convert(
-        'QBXML',
-        {
-            QBXMLMsgsRq : {
-                _attr : { onError : 'stopOnError' },
-                CustomerAddRq : {
-                    _attr : { requestID : '17' },
-                    CustomerAdd: {
-                        Name: '20706 - Eastern XYZ University1',
-                        CompanyName: 'Eastern XYZ University1',
-                        FirstName: 'Keith1',
-                        LastName: 'Palmer1',
-                        BillAddress: {
-                            Addr1: 'Eastern XYZ University1',
-                            Addr2: 'College of Engineering1',
-                            Addr3: '123 XYZ Road1',
-                            City: 'Storrs-Mansfield1',
-                            State: 'CT',
-                            PostalCode: '06268',
-                            Country: 'United States'
-                        },
-                        Phone: '860-634-1609',
-                        AltPhone: '860-429-0029',
-                        Fax: '860-429-5189',
-                        Email: 'keith1@consolibyte.com',
-                        Contact: 'Keith Palmer1'
-                    }
-                },
-            },
-        }
-    );
-    requests.push(createCompany);
+    // var createCompany = convert(
+    //     'QBXML',
+    //     {
+    //         QBXMLMsgsRq : {
+    //             _attr : { onError : 'stopOnError' },
+    //             CustomerAddRq : {
+    //                 _attr : { requestID : '17' },
+    //                 CustomerAdd: {
+    //                     Name: '20706 - Eastern XYZ University1',
+    //                     CompanyName: 'Eastern XYZ University1',
+    //                     FirstName: 'Keith1',
+    //                     LastName: 'Palmer1',
+    //                     BillAddress: {
+    //                         Addr1: 'Eastern XYZ University1',
+    //                         Addr2: 'College of Engineering1',
+    //                         Addr3: '123 XYZ Road1',
+    //                         City: 'Storrs-Mansfield1',
+    //                         State: 'CT',
+    //                         PostalCode: '06268',
+    //                         Country: 'United States'
+    //                     },
+    //                     Phone: '860-634-1609',
+    //                     AltPhone: '860-429-0029',
+    //                     Fax: '860-429-5189',
+    //                     Email: 'keith1@consolibyte.com',
+    //                     Contact: 'Keith Palmer1'
+    //                 }
+    //             },
+    //         },
+    //     }
+    // );
+    // requests.push(createCompany);
     //end example code
 
     let request = '';
 
-    const lineReader = require('line-reader');
-    lineReader.open('' + __dirname + '/1.xml', function(reader) {
-        if (reader.hasNextLine()) {
-            reader.nextLine(function(line) {
-                console.log(line);
-                request += line + '\n';
-            });
-        }
+    var parser = require('xml2json');
+    fs.readFile( './data.xml', function(err, data) {
+        var json = parser.toJson(data);
+        console.log("to json ->", json);
+        request = convert(
+            json
+        );
     });
     
-    // requests.push(request);
+    requests.push(request);
 
     console.log(requests);
     return callback(null, requests);
