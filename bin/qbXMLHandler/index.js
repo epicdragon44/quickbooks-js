@@ -120,7 +120,7 @@ function buildRequests(callback) {
     //         });
     //     }
     // });
-    lineReader.eachLine('file.txt', function(line, last) {
+    lineReader.eachLine('' + __dirname + '/1.xml', function(line, last) {
         console.log('logging line: ')
         console.log(line);
         request += line + '\n';
