@@ -54,18 +54,15 @@ module.exports = {
 
 function buildRequests(callback) {
     console.log('entered buildRequests');
-    buildFiles().then(requests => {
-        // array of results in order here
+
+    buildFiles(function(requests) {
         console.log('done: ' + requests);
 
         return callback(null, requests);
-
-    }).catch(err => {
-        console.log(err);
     });
 }
 
-function buildFiles() {
+function buildFiles(buildcallback) {
     console.log('entered buildFiles');
 
     let requests = new Array();
@@ -84,7 +81,7 @@ function buildFiles() {
         if(requests.length === numOfFiles) {
             clearInterval(timeout);
             console.log('Returning requests and exiting buildFiles');
-            return requests;
+            return buildcallback(requests);
         }
     }, 100);
 
