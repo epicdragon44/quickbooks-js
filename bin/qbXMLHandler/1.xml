@@ -4,24 +4,24 @@
     <QBXMLMsgsRq onError="stopOnError">
         <CustomerAddRq requestID="15">
             <CustomerAdd>
-                <Name>20706 - Eastern XYZ University</Name>
-                <CompanyName>Eastern XYZ University</CompanyName>
-                <FirstName>Keith</FirstName>
-                <LastName>Palmer</LastName>
+                <Name>20706 - Eastern XYZ University - Try 2</Name>
+                <CompanyName>Eastern XYZ University - Try 2</CompanyName>
+                <FirstName>Keith - Try 2</FirstName>
+                <LastName>Palmer - Try 2</LastName>
                 <BillAddress>
-                    <Addr1>Eastern XYZ University</Addr1>
-                    <Addr2>College of Engineering</Addr2>
-                    <Addr3>123 XYZ Road</Addr3>
-                    <City>Storrs-Mansfield</City>
+                    <Addr1>Eastern XYZ University - Try 2</Addr1>
+                    <Addr2>College of Engineering - Try 2</Addr2>
+                    <Addr3>123 XYZ Road - Try 2</Addr3>
+                    <City>Storrs-Mansfield - Try 2</City>
                     <State>CT</State>
-                    <PostalCode>06268</PostalCode>
-                    <Country>United States</Country>
+                    <PostalCode>06268 - Try 2</PostalCode>
+                    <Country>United States - Try 2</Country>
                 </BillAddress>
-                <Phone>860-634-1602</Phone>
-                <AltPhone>860-429-0021</AltPhone>
-                <Fax>860-429-5183</Fax>
-                <Email>keith@consolibyte.com</Email>
-                <Contact>Keith Palmer</Contact>
+                <Phone>860-634-1602 - Try 2</Phone>
+                <AltPhone>860-429-0021 - Try 2</AltPhone>
+                <Fax>860-429-5183 - Try 2</Fax>
+                <Email>keith@consolibyte.com - Try 2</Email>
+                <Contact>Keith Palmer - Try 2</Contact>
             </CustomerAdd>
         </CustomerAddRq>
     </QBXMLMsgsRq>

@@ -38,7 +38,7 @@ module.exports = {
      * @param response - qbXML response
      */
     handleResponse: function(response) {
-        console.log(response);
+        console.log("HandleResponse: " + response);
     },
 
     /**
@@ -48,7 +48,7 @@ module.exports = {
      * @param error - qbXML error response
      */
     didReceiveError: function(error) {
-        console.log(error);
+        console.log("didReceiveError: " + error);
     }
 };
 
