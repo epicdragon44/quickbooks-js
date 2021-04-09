@@ -90,34 +90,9 @@ function buildRequests(callback) {
     // requests.push(createCompany);
     //end example code
 
-    //TRY1
-
-    // let request = '';
-
-    // var parser = require('xml2json');
-    // fs.readFile( './data.xml', function(err, data) {
-    //     var json = parser.toJson(data);
-    //     console.log("to json ->", json);
-    //     request = convert(
-    //         json
-    //     );
-    // });
-    
-    // requests.push(request);
-
-    //TRY2
-
     let request = '';
 
     var lineReader = require('line-reader');
-    // lineReader.open('' + __dirname + '/1.xml', function(reader) {
-    //     if (reader.hasNextLine()) {
-    //         reader.nextLine(function(line) {
-    //             console.log(line);
-    //             request += line + '\n';
-    //         });
-    //     }
-    // });
     lineReader.open('' + __dirname + '/1.xml', function(err, reader) {
         if (err) throw err;
         if (reader.hasNextLine()) {
