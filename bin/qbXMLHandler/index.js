@@ -93,31 +93,40 @@ function buildRequests(callback) {
     let request = '';
 
     var lineReader = require('line-reader');
-    lineReader.open('' + __dirname + '/1.xml', function(err, reader) {
-        console.log('iterating')
-        if (err) throw err;
-        console.log('entered linereader');
-        if (reader.hasNextLine()) {
-            reader.nextLine(function(err, line) {
-                console.log('entered reader');
-                try {
-                    if (err) throw err;
-                    console.log('logging line:');
-                    console.log(line);
-                    request += line + '\n';
-                } finally {
-                    console.log('closing1');
-                    reader.close(function(err) {
-                    if (err) throw err;          
-                    });
-                }
-            });
-        }
-        else {
-            console.log('closing2');
-            reader.close(function(err) {
-                if (err) throw err;          
-            });
+    // lineReader.open('' + __dirname + '/1.xml', function(err, reader) {
+    //     console.log('iterating')
+    //     if (err) throw err;
+    //     console.log('entered linereader');
+    //     if (reader.hasNextLine()) {
+    //         reader.nextLine(function(err, line) {
+    //             console.log('entered reader');
+    //             try {
+    //                 if (err) throw err;
+    //                 console.log('logging line:');
+    //                 console.log(line);
+    //                 request += line + '\n';
+    //             } finally {
+    //                 console.log('closing1');
+    //                 reader.close(function(err) {
+    //                 if (err) throw err;          
+    //                 });
+    //             }
+    //         });
+    //     }
+    //     else {
+    //         console.log('closing2');
+    //         reader.close(function(err) {
+    //             if (err) throw err;          
+    //         });
+    //     }
+    // });
+    lineReader.eachLine('file.txt', function(line, last) {
+        console.log('logging line: ')
+        console.log(line);
+        request += line + '\n';
+        if (last) {
+            console.log('done');
+            return false; // stop reading
         }
     });
 
