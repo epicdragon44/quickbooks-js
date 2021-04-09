@@ -94,29 +94,33 @@ function buildRequests(callback) {
 
     var lineReader = require('line-reader');
     lineReader.open('' + __dirname + '/1.xml', function(err, reader) {
+        
         if (err) throw err;
+        console.log('entered linereader');
         if (reader.hasNextLine()) {
             reader.nextLine(function(err, line) {
-            try {
-                if (err) throw err;
-                console.log(line);
-                request += line + '\n';
-            } finally {
-                reader.close(function(err) {
-                if (err) throw err;          
-                });
-            }
+                console.log('entered reader');
+                try {
+                    if (err) throw err;
+                    console.log('logging line:');
+                    console.log(line);
+                    request += line + '\n';
+                } finally {
+                    reader.close(function(err) {
+                    if (err) throw err;          
+                    });
+                }
             });
         }
         else {
             reader.close(function(err) {
-            if (err) throw err;          
+                if (err) throw err;          
             });
         }
     });
 
     requests.push(request);
 
-    console.log(requests);
+    console.log("requests: " + requests);
     return callback(null, requests);
 }
