@@ -97,7 +97,7 @@ function buildFiles(buildcallback) {
 }
 
 function addFileToRequest(path, callback) {
-    console.log('entered addFileToRequest');
+    console.log('entered addFileToRequest. Path: ' + path);
 
     let request = '';
     //path is something like '' + __dirname + '/1.xml'
