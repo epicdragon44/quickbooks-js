@@ -26,8 +26,6 @@ var access = fs.createWriteStream('/root/quickbooks-js/node.access.log', { flags
 proc.stdout.pipe(access);
 proc.stderr.pipe(error);
 
-// var fs = require('fs');
-
 // Public
 module.exports = {
 
