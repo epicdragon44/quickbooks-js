@@ -11,12 +11,20 @@
  * file that was distributed with this source code.
  */
 'use strict';
+
 var data2xml = require('data2xml');
 var convert = data2xml({
     xmlHeader: '<?xml version="1.0" encoding="utf-8"?>\n<?qbxml version="13.0"?>\n'
 });
 
-// var fs = require('fs');
+/* REROUTE CONSOLE OUTPUT TO A FILE */
+const fs = require('fs');
+var access = fs.createWriteStream('/root/quickbooks-js/node.access.log', { flags: 'a' })
+      , error = fs.createWriteStream('/root/quickbooks-js/node.error.log', { flags: 'a' });
+
+// redirect stdout / stderr
+process.stdout.pipe(access);
+process.stderr.pipe(error);
 
 // Public
 module.exports = {
@@ -70,9 +78,8 @@ function buildFiles(buildcallback) {
     var numOfFiles = 0;
 
     //count number of xml files
-    const fs = require('fs');
     const length = fs.readdirSync(__dirname).length;
-    numOfFiles = length - 1;
+    numOfFiles = length - 2;
     console.log('there are ' + numOfFiles + " xml files available")
 
     //for each file, read and add to requests
@@ -108,8 +115,15 @@ function addFileToRequest(path, callback) {
         if (last) {
             console.log('done');
             console.log('Returned: ' + request);
+            var fs = require('fs');
+            var newPath = '' + __dirname + '/completed' + path.substring(path.indexOf('qbXMLHandler/') + 12, path.length);
+            fs.rename(path, newPath, function (err) {
+            if (err) throw err
+            console.log('Successfully renamed - AKA moved!');
+            })
             return callback(request);
         }
+
     });
 }
 
