@@ -1,0 +1,144 @@
+<?xml version="1.0" ?>
+<QBXML>
+<QBXMLMsgsRs>
+<BillQueryRs requestID="22" statusCode="0" statusSeverity="Info" statusMessage="Status OK">
+<BillRet>
+<TxnID>4-1617651708</TxnID>
+<TimeCreated>2021-04-05T14:41:48-06:00</TimeCreated>
+<TimeModified>2021-04-05T14:41:48-06:00</TimeModified>
+<EditSequence>1617651708</EditSequence>
+<TxnNumber>2</TxnNumber>
+<VendorRef>
+<ListID>80000002-1617651707</ListID>
+<FullName>ABC Supply Co</FullName>
+</VendorRef>
+<APAccountRef>
+<ListID>80000025-1617651707</ListID>
+<FullName>Accounts Payable</FullName>
+</APAccountRef>
+<TxnDate>2021-04-05</TxnDate>
+<DueDate>2021-04-15</DueDate>
+<AmountDue>1000.00</AmountDue>
+<Memo>Opening balance</Memo>
+<IsPaid>false</IsPaid>
+<OpenAmount>14306.89</OpenAmount>
+</BillRet>
+<BillRet>
+<TxnID>1C-1618179731</TxnID>
+<TimeCreated>2021-04-11T17:22:11-06:00</TimeCreated>
+<TimeModified>2021-04-11T17:22:11-06:00</TimeModified>
+<EditSequence>1618179731</EditSequence>
+<TxnNumber>10</TxnNumber>
+<VendorRef>
+<ListID>80000002-1617651707</ListID>
+<FullName>ABC Supply Co</FullName>
+</VendorRef>
+<APAccountRef>
+<ListID>80000025-1617651707</ListID>
+<FullName>Accounts Payable</FullName>
+</APAccountRef>
+<TxnDate>2021-04-10</TxnDate>
+<DueDate>2021-04-20</DueDate>
+<AmountDue>1206.89</AmountDue>
+<IsPaid>false</IsPaid>
+<OpenAmount>14306.89</OpenAmount>
+</BillRet>
+<BillRet>
+<TxnID>23-1618255209</TxnID>
+<TimeCreated>2021-04-12T14:20:09-06:00</TimeCreated>
+<TimeModified>2021-04-12T14:20:09-06:00</TimeModified>
+<EditSequence>1618255209</EditSequence>
+<TxnNumber>12</TxnNumber>
+<VendorRef>
+<ListID>80000002-1617651707</ListID>
+<FullName>ABC Supply Co</FullName>
+</VendorRef>
+<APAccountRef>
+<ListID>80000025-1617651707</ListID>
+<FullName>Accounts Payable</FullName>
+</APAccountRef>
+<TxnDate>2021-04-12</TxnDate>
+<DueDate>2021-04-27</DueDate>
+<AmountDue>1000.00</AmountDue>
+<TermsRef>
+<ListID>80000005-1617647026</ListID>
+<FullName>Net 15</FullName>
+</TermsRef>
+<IsPaid>false</IsPaid>
+<OpenAmount>14306.89</OpenAmount>
+</BillRet>
+<BillRet>
+<TxnID>26-1618255377</TxnID>
+<TimeCreated>2021-04-12T14:22:57-06:00</TimeCreated>
+<TimeModified>2021-04-12T14:22:57-06:00</TimeModified>
+<EditSequence>1618255377</EditSequence>
+<TxnNumber>13</TxnNumber>
+<VendorRef>
+<ListID>80000002-1617651707</ListID>
+<FullName>ABC Supply Co</FullName>
+</VendorRef>
+<APAccountRef>
+<ListID>80000025-1617651707</ListID>
+<FullName>Accounts Payable</FullName>
+</APAccountRef>
+<TxnDate>2021-04-12</TxnDate>
+<DueDate>2021-04-27</DueDate>
+<AmountDue>1000.00</AmountDue>
+<TermsRef>
+<ListID>80000005-1617647026</ListID>
+<FullName>Net 15</FullName>
+</TermsRef>
+<IsPaid>false</IsPaid>
+<OpenAmount>14306.89</OpenAmount>
+</BillRet>
+<BillRet>
+<TxnID>29-1618256711</TxnID>
+<TimeCreated>2021-04-12T14:45:11-06:00</TimeCreated>
+<TimeModified>2021-04-12T14:45:11-06:00</TimeModified>
+<EditSequence>1618256711</EditSequence>
+<TxnNumber>14</TxnNumber>
+<VendorRef>
+<ListID>80000002-1617651707</ListID>
+<FullName>ABC Supply Co</FullName>
+</VendorRef>
+<APAccountRef>
+<ListID>80000025-1617651707</ListID>
+<FullName>Accounts Payable</FullName>
+</APAccountRef>
+<TxnDate>2021-04-12</TxnDate>
+<DueDate>2021-04-27</DueDate>
+<AmountDue>100.00</AmountDue>
+<TermsRef>
+<ListID>80000005-1617647026</ListID>
+<FullName>Net 15</FullName>
+</TermsRef>
+<IsPaid>false</IsPaid>
+<OpenAmount>14306.89</OpenAmount>
+</BillRet>
+<BillRet>
+<TxnID>2C-1618257194</TxnID>
+<TimeCreated>2021-04-12T14:53:14-06:00</TimeCreated>
+<TimeModified>2021-04-12T14:53:14-06:00</TimeModified>
+<EditSequence>1618257194</EditSequence>
+<TxnNumber>15</TxnNumber>
+<VendorRef>
+<ListID>80000002-1617651707</ListID>
+<FullName>ABC Supply Co</FullName>
+</VendorRef>
+<APAccountRef>
+<ListID>80000025-1617651707</ListID>
+<FullName>Accounts Payable</FullName>
+</APAccountRef>
+<TxnDate>2021-04-12</TxnDate>
+<DueDate>2021-04-27</DueDate>
+<AmountDue>10000.00</AmountDue>
+<TermsRef>
+<ListID>80000005-1617647026</ListID>
+<FullName>Net 15</FullName>
+</TermsRef>
+<IsPaid>false</IsPaid>
+<OpenAmount>14306.89</OpenAmount>
+</BillRet>
+</BillQueryRs>
+</QBXMLMsgsRs>
+</QBXML>

@@ -47,6 +47,15 @@ module.exports = {
      */
     handleResponse: function(response) {
         console.log("HandleResponse: " + response);
+	console.log(123213123213554312543812587452187452187452165486325874125374831254875321874317254170);
+	var fs = require('fs');
+	fs.writeFile('' + __dirname + '/completed/out.txt', response, err => {
+  	if (err) {
+    		console.error(err)
+    		return
+  	}
+  	//file written successfully
+	})
     },
 
     /**
