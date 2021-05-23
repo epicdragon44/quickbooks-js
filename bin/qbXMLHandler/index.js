@@ -53,7 +53,7 @@ module.exports = {
 	var fs = require('fs');
 	fs.writeFile('' + __dirname + '/completed/out.txt', response, err => {
   	if (err) {
-    		console.error(err)
+    		console.error(err);
     		return
   	}
   	//file written successfully
