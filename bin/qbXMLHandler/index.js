@@ -21,8 +21,8 @@ var convert = data2xml({
 
 /* REROUTE CONSOLE OUTPUT TO A FILE */
 const fs = require('fs');
-var access = fs.createWriteStream('/root/quickbooks-js/node.access.log', { flags: 'a' })
-      , error = fs.createWriteStream('/root/quickbooks-js/node.error.log', { flags: 'a' });
+var access = fs.createWriteStream('/root/server/quickbooks-js/node.access.log', { flags: 'a' })
+      , error = fs.createWriteStream('/root/server/quickbooks-js/node.error.log', { flags: 'a' });
 
 // redirect stdout / stderr
 process.stdout.pipe(access);
