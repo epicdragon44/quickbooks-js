@@ -111,6 +111,8 @@ function buildFiles(buildcallback) {
         }
     }, 100);
 
+    //TODO FOR RYAN: comment out lines 89 to 112 and instead of reading from files, simply populate the "requests" array with the requests currently stored in localstorage. easy.
+
     // return Promise.all(requests);
 }
 
