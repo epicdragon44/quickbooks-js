@@ -86,34 +86,34 @@ function buildFiles(buildcallback) {
 
     let requests = new Array();
 
-    var numOfFiles = 0;
+    // var numOfFiles = 0;
 
-    //count number of xml files
-    const length = fs.readdirSync(__dirname).length;
-    numOfFiles = length - 2;
-    console.log('there are ' + numOfFiles + " xml files available")
+    // //count number of xml files
+    // const length = fs.readdirSync(__dirname).length;
+    // numOfFiles = length - 2;
+    // console.log('there are ' + numOfFiles + " xml files available")
 
-    //for each file, read and add to requests
-    for (let i = 1; i <= numOfFiles; i++) {
-        console.log('iterating on file #' + i);
-        addFileToRequest('' + __dirname + '/' + i + '.xml', function(request) {
-            console.log('pushed request #' + i);
-            requests.push(request);
-        }); 
-    }
+    // //for each file, read and add to requests
+    // for (let i = 1; i <= numOfFiles; i++) {
+    //     console.log('iterating on file #' + i);
+    //     addFileToRequest('' + __dirname + '/' + i + '.xml', function(request) {
+    //         console.log('pushed request #' + i);
+    //         requests.push(request);
+    //     }); 
+    // }
 
-    //wait for requests to populate
-    var timeout2 = setInterval(function() {
-        if(requests.length === numOfFiles) {
-            clearInterval(timeout2);
-            console.log('Returning requests and exiting buildFiles');
-            return buildcallback(requests);
-        }
-    }, 100);
+    // //wait for requests to populate
+    // var timeout2 = setInterval(function() {
+    //     if(requests.length === numOfFiles) {
+    //         clearInterval(timeout2);
+    //         console.log('Returning requests and exiting buildFiles');
+    //         return buildcallback(requests);
+    //     }
+    // }, 100);
 
-    //TODO FOR RYAN: comment out lines 89 to 112 and instead of reading from files, simply populate the "requests" array with the requests currently stored in localstorage. easy.
+    //TODO FOR RYAN: simply populate the "requests" array with the xml requests currently stored in localstorage. easy.
 
-    // return Promise.all(requests);
+    return Promise.all(requests);
 }
 
 function addFileToRequest(path, callback) {

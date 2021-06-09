@@ -11,6 +11,8 @@
  * file that was distributed with this source code.
  */
 
+import {reactLocalStorage} from 'reactjs-localstorage'; 
+
 // Private
 var soap = require('soap');
 var url = 'http://localhost:8000/wsdl?wsdl';
@@ -75,8 +77,8 @@ Client.prototype.clientVersionBelowRecommended = function(callback) {
 
 Client.prototype.authenticateWithCorrectUsernameAndPassword = function(callback) {
     var args = {
-        strUserName: process.env.QB_USERNAME || 'username',
-        strPassword: process.env.QB_PASSWORD || 'password'
+        strUserName: reactLocalStorage.get('username', true) || 'username',
+        strPassword: reactLocalStorage.get('password', true) || 'password',
     };
     this.client.authenticate(args, function(err, result) {
         return callback(err, result);
